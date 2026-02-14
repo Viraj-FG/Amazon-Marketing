@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  amazon-marketing:
+    build: .
+    container_name: amazon-marketing
+    env_file:
+      - .env
+    volumes:
+      - ./links.txt:/app/links.txt
+      - ./logs:/app/logs
+    restart: "no"

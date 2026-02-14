@@ -1,0 +1,3 @@
+# Example links.txt - Add your Amazon affiliate links below (one per line)
+# https://amzn.to/your-link-1
+# https://amzn.to/your-link-2
