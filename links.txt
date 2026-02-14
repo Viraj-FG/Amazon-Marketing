@@ -1,3 +1,41 @@
-# Example links.txt - Add your Amazon affiliate links below (one per line)
-# https://amzn.to/your-link-1
-# https://amzn.to/your-link-2
+# Amazon Affiliate Links - Trending Tech Products Feb 2026
+# Format: One link per line. Lines starting with # are ignored.
+
+# --- PROVEN BEST-SELLERS (High Volume) ---
+
+# Apple AirPods 4 with Active Noise Cancellation
+# Price: $139.99 | Commission: 3% | Category: Headphones
+https://amzn.to/4rMK6Jx
+
+# Fire TV Stick 4K Max (AI-powered Fire TV Search)
+# Price: $39.99 | Commission: 4% | Category: Fire TV Devices
+https://amzn.to/4tBi2uj
+
+# Echo Dot (newest model) - Vibrant sounding speaker with Alexa+
+# Price: $49.99 | Commission: 4% | Category: Echo Devices
+https://amzn.to/4kMpsXN
+
+# Kindle Paperwhite 16GB - 7" glare-free display, adjustable warm light
+# Price: $159.99 | Commission: 4% | Category: Kindle E-readers
+https://amzn.to/4asVp2E
+
+# Apple AirTag (2nd Gen) - Precision Finding, built-in speaker
+# Price: $29.00 | Commission: 4% | Category: Cell Phones & Accessories
+https://amzn.to/4qBLYDU
+
+# --- TIKTOK VIRAL PICKS (Explosive Growth) ---
+
+# TP-Link Deco X55 AX3000 WiFi 6 Mesh System (3-Pack)
+# Price: $149.99 | Commission: 2.5% | Category: Computers/Networking
+# TikTok trending: 2,600% growth on mesh WiFi routers
+https://amzn.to/40fJDnm
+
+# Waterpik Cordless Water Flosser (TikTok viral dental trend)
+# Commission: 3% | Category: Beauty & Grooming | Amazon's Choice
+# TikTok trending: 1,000% growth on cordless water flossers
+https://amzn.to/4rtbBlr
+
+# Scanmarker Pro Pen Scanner - Digital highlighter & OCR reader
+# Price: $169.99 | Commission: 4% | Category: Office Electronics
+# TikTok viral for students - scan text to computer instantly
+https://amzn.to/4qF5psC
