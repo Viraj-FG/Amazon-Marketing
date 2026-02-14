@@ -27,6 +27,18 @@ services:
     command: python blog_generator.py
     restart: "no"
 
+  # One-shot: Generate ALL content types (15 per product)
+  content-pump:
+    build: .
+    container_name: amazon-content-pump
+    env_file:
+      - .env
+    volumes:
+      - ./links.txt:/app/links.txt
+      - ./content_output:/app/content_output
+    command: python content_pump.py
+    restart: "no"
+
   # Long-running: Monitor Reddit for keyword matches and send alerts
   reddit-monitor:
     build: .
