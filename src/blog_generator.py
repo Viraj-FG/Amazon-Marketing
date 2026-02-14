@@ -6,14 +6,12 @@ Outputs ready-to-publish HTML or Markdown files.
 
 import os
 import json
-import openai
 from datetime import datetime
 from dotenv import load_dotenv
 from scraper import scrape_product
+from ai_provider import ai_generate
 
 load_dotenv()
-
-openai.api_key = os.getenv("OPENAI_API_KEY")
 
 OUTPUT_DIR = "blog_output"
 
@@ -52,28 +50,17 @@ Format in Markdown.
 Target: 1500-2000 words.
 """
 
-    try:
-        response = openai.chat.completions.create(
-            model="gpt-4o",
-            messages=[
-                {
-                    "role": "system",
-                    "content": (
-                        "You are an expert tech blogger and SEO specialist. "
-                        "Write engaging, detailed product reviews that rank well "
-                        "on Google. Be authentic, balanced (mention downsides too), "
-                        "and genuinely helpful. Never sound like pure advertising."
-                    ),
-                },
-                {"role": "user", "content": prompt},
-            ],
-            max_tokens=4000,
-            temperature=0.7,
-        )
-        return response.choices[0].message.content
-    except Exception as e:
-        print(f"[ERROR] Blog generation failed: {e}")
-        return None
+    return ai_generate(
+        system_prompt=(
+            "You are an expert tech blogger and SEO specialist. "
+            "Write engaging, detailed product reviews that rank well "
+            "on Google. Be authentic, balanced (mention downsides too), "
+            "and genuinely helpful. Never sound like pure advertising."
+        ),
+        user_prompt=prompt,
+        max_tokens=4000,
+        temperature=0.7,
+    )
 
 
 def generate_seo_metadata(product):
@@ -121,8 +108,7 @@ image: {product.get('image_url', '')}
 
 def generate_social_snippets(product, affiliate_link):
     """Generate social media snippets to promote the blog post"""
-    try:
-        prompt = f"""
+    prompt = f"""
 Generate social media posts to promote a blog article about: {product['title']}
 Affiliate link: {affiliate_link}
 
@@ -134,22 +120,12 @@ Create:
 
 Format each with a clear label.
 """
-        response = openai.chat.completions.create(
-            model="gpt-4o",
-            messages=[
-                {
-                    "role": "system",
-                    "content": "You write viral social media posts for tech products.",
-                },
-                {"role": "user", "content": prompt},
-            ],
-            max_tokens=800,
-            temperature=0.8,
-        )
-        return response.choices[0].message.content
-    except Exception as e:
-        print(f"[ERROR] Social snippet generation failed: {e}")
-        return None
+    return ai_generate(
+        system_prompt="You write viral social media posts for tech products.",
+        user_prompt=prompt,
+        max_tokens=800,
+        temperature=0.8,
+    )
 
 
 # ============================================================

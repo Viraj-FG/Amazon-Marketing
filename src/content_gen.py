@@ -1,12 +1,10 @@
 """
 AI-Powered Content Generator
-Uses OpenAI to generate marketing copy for Amazon products.
+Uses local Ollama models (free) or OpenAI as fallback.
 """
 
 import os
-import openai
-
-openai.api_key = os.getenv("OPENAI_API_KEY")
+from ai_provider import ai_generate
 
 
 def generate_content(product):
@@ -14,25 +12,20 @@ def generate_content(product):
     try:
         prompt = build_prompt(product)
 
-        response = openai.chat.completions.create(
-            model="gpt-4o",
-            messages=[
-                {
-                    "role": "system",
-                    "content": (
-                        "You are a skilled affiliate marketer. Write engaging, "
-                        "authentic product recommendations. Be conversational, "
-                        "highlight key benefits, and include a clear call-to-action. "
-                        "Never sound spammy. Include relevant hashtags for social media."
-                    ),
-                },
-                {"role": "user", "content": prompt},
-            ],
+        ai_text = ai_generate(
+            system_prompt=(
+                "You are a skilled affiliate marketer. Write engaging, "
+                "authentic product recommendations. Be conversational, "
+                "highlight key benefits, and include a clear call-to-action. "
+                "Never sound spammy. Include relevant hashtags for social media."
+            ),
+            user_prompt=prompt,
             max_tokens=1000,
             temperature=0.7,
         )
 
-        ai_text = response.choices[0].message.content
+        if not ai_text:
+            return None
 
         # Parse AI response into structured content
         content = parse_ai_response(ai_text, product)

@@ -7,14 +7,12 @@ buyer's guides, and newsletter content.
 
 import os
 import json
-import openai
 from datetime import datetime
 from dotenv import load_dotenv
 from scraper import scrape_product
+from ai_provider import ai_generate
 
 load_dotenv()
-
-openai.api_key = os.getenv("OPENAI_API_KEY")
 
 OUTPUT_DIR = "content_output"
 
@@ -152,18 +150,7 @@ def generate_and_save(product, link, output_dir, filename, generator_fn):
     return None
 
 
-def ai_generate(system_prompt, user_prompt, max_tokens=2000):
-    """Helper to call OpenAI"""
-    response = openai.chat.completions.create(
-        model="gpt-4o",
-        messages=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_prompt},
-        ],
-        max_tokens=max_tokens,
-        temperature=0.75,
-    )
-    return response.choices[0].message.content
+## ai_generate is imported from ai_provider.py
 
 
 def product_context(product, link):

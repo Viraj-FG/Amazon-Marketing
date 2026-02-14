@@ -168,6 +168,8 @@ def scan_subreddits(reddit, config):
 
 def generate_reply(match, product_link):
     """Generate a natural, helpful reply for a matched post"""
+    from ai_provider import ai_generate
+
     prompt_context = f"""
 Someone on Reddit (r/{match['subreddit']}) posted:
 
@@ -181,30 +183,16 @@ Include this affiliate link naturally: {product_link}
 Keep it conversational and authentic — NOT spammy.
 Max 200 words.
 """
-    try:
-        import openai
-        openai.api_key = os.getenv("OPENAI_API_KEY")
-
-        response = openai.chat.completions.create(
-            model="gpt-4o",
-            messages=[
-                {
-                    "role": "system",
-                    "content": (
-                        "You write helpful Reddit comments. Be genuine, "
-                        "conversational, and provide real value. Never sound "
-                        "like an ad or spam. Include personal experience tone."
-                    ),
-                },
-                {"role": "user", "content": prompt_context},
-            ],
-            max_tokens=300,
-            temperature=0.8,
-        )
-        return response.choices[0].message.content
-    except Exception as e:
-        print(f"[ERROR] Reply generation failed: {e}")
-        return None
+    return ai_generate(
+        system_prompt=(
+            "You write helpful Reddit comments. Be genuine, "
+            "conversational, and provide real value. Never sound "
+            "like an ad or spam. Include personal experience tone."
+        ),
+        user_prompt=prompt_context,
+        max_tokens=300,
+        temperature=0.8,
+    )
 
 
 # ============================================================
