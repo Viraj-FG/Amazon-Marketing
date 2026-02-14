@@ -1,0 +1,24 @@
+{
+  "products": [
+    {
+      "link": "https://amzn.to/4kFdSh6",
+      "keywords": ["mac mini", "mini pc", "desktop computer", "apple silicon"],
+      "added_at": "2026-02-14T21:00:00Z"
+    }
+  ],
+  "subreddits": [
+    "macmini", "mac", "apple", "SuggestALaptop", "laptops",
+    "MiniPCs", "BuildAPC", "techsupport", "Frugal",
+    "BuyItForLife", "deals", "AmazonDeals", "homelab",
+    "selfhosted", "productivity"
+  ],
+  "keywords": [
+    "mac mini", "which laptop", "laptop recommendation",
+    "should I buy", "best desktop", "mini pc",
+    "computer recommendation", "upgrade from",
+    "looking for a computer", "need a new computer",
+    "worth buying", "best value", "home server",
+    "small form factor", "compact desktop"
+  ],
+  "whatsapp_notify": true
+}

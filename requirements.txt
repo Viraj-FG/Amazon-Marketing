@@ -3,7 +3,6 @@ beautifulsoup4
 requests
 praw
 tweepy
-python-wordpress-xmlrpc
 python-dotenv
 schedule
 lxml

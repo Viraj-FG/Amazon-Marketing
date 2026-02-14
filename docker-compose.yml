@@ -1,12 +1,40 @@
 version: "3.8"
 
 services:
-  amazon-marketing:
+  # One-shot: Process links, generate blog content, post to platforms
+  content-engine:
     build: .
-    container_name: amazon-marketing
+    container_name: amazon-content-engine
     env_file:
       - .env
     volumes:
       - ./links.txt:/app/links.txt
       - ./logs:/app/logs
+      - ./blog_output:/app/blog_output
+      - ./watch_config.json:/app/watch_config.json
+    command: python main.py
     restart: "no"
+
+  # One-shot: Generate SEO blog articles from links
+  blog-generator:
+    build: .
+    container_name: amazon-blog-generator
+    env_file:
+      - .env
+    volumes:
+      - ./links.txt:/app/links.txt
+      - ./blog_output:/app/blog_output
+    command: python blog_generator.py
+    restart: "no"
+
+  # Long-running: Monitor Reddit for keyword matches and send alerts
+  reddit-monitor:
+    build: .
+    container_name: amazon-reddit-monitor
+    env_file:
+      - .env
+    volumes:
+      - ./logs:/app/logs
+      - ./watch_config.json:/app/watch_config.json
+    command: python reddit_monitor.py
+    restart: unless-stopped
