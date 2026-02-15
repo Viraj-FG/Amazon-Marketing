@@ -1,41 +1,40 @@
-# Amazon Marketing Automation
+# Amazon-Marketing Repository
 
-Automated Amazon affiliate marketing tool powered by Docker.
+## Plan for Automation
 
-## How It Works
-1. Add your affiliate links to `links.txt` (one per line)
-2. Run `docker-compose up`
-3. The tool will:
-   - Scrape product details (title, price, images, features)
-   - Generate marketing copy using AI
-   - Post content to configured platforms (Reddit, blogs, etc.)
-   - Track all activity in `logs/`
+This repository aims to create a comprehensive automation suite for Amazon and multi-platform marketing. The following plan outlines the development stages:
 
-## Setup
-1. Clone this repo
-2. Copy `.env.example` to `.env` and fill in your API keys
-3. Add links to `links.txt`
-4. Run: `docker-compose up --build`
+### 1. Researcher Bot
+- **Objective:** Discover trending products from platforms like X, Pinterest, and Instagram.
+- **Features:**
+  - Integrates APIs for data collection.
+  - Filters trends based on engagement metrics.
+  - Sends daily product summaries for validation via WhatsApp.
 
-## File Structure
-```
-Amazon-Marketing/
-├── Dockerfile
-├── docker-compose.yml
-├── requirements.txt
-├── links.txt              # Your affiliate links (one per line)
-├── .env.example           # Template for API keys
-├── src/
-│   ├── main.py            # Entry point
-│   ├── scraper.py         # Scrapes Amazon product data
-│   ├── content_gen.py     # AI-powered content generation
-│   ├── poster.py          # Posts to Reddit/blogs/social
-│   └── tracker.py         # Tracks posted content
-└── logs/                  # Activity logs
-```
+### 2. Relay Bot
+- **Objective:** Relay validated product data for content workflows.
+- **Features:**
+  - Collects and prepares product details such as descriptions, images, and links.
+  - Stores data for reuse in campaigns.
 
-## Supported Platforms
-- Reddit (via PRAW)
-- Twitter/X (via API)
-- WordPress blogs (via REST API)
-- Custom webhooks
+### 3. Content Creation Bot
+- **Objective:** Automate content generation and posting across platforms.
+- **Features:**
+  - SEO-optimized blogs and product reviews.
+  - Platform-specific content for X, Pinterest, and Instagram.
+  - Automated scheduling and posting.
+
+### 4. Engagement and Analytics
+- **Objective:** Monitor and engage with customer discussions.
+- **Features:**
+  - Tracks conversations about products.
+  - Responds to inquiries and drives engagement.
+  - Analyzes platform performance and optimizes workflows.
+
+### Development Roadmap
+- **Phase 1:** Build and commit Researcher Bot API integration.
+- **Phase 2:** Implement and test Relay Bot workflows.
+- **Phase 3:** Develop the Content Creation Bot and publishing pipelines.
+- **Phase 4:** Integrate engagement and analytics capabilities.
+
+This repository will serve as the backbone for automating e-commerce marketing and customer engagement. All developments will be pushed and tracked incrementally.
