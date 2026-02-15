@@ -5,17 +5,17 @@ from datetime import datetime
 
 def fetch_x_trends():
     """Fetch trending topics from X."""
-    # Placeholder for X API call
+    # Placeholder for X API call; Implement API integration here
     return ["Product Trend 1", "Product Trend 2"]
 
 def fetch_pinterest_trends():
     """Fetch trending pins from Pinterest."""
-    # Placeholder for Pinterest API call
+    # Placeholder for Pinterest API call; Implement API integration here
     return ["Pinterest Trend 1", "Pinterest Trend 2"]
 
 def fetch_instagram_trends():
     """Fetch trending posts from Instagram."""
-    # Placeholder for Instagram API call
+    # Placeholder for Instagram API call; Implement API integration here
     return ["Instagram Trend 1", "Instagram Trend 2"]
 
 def generate_report():
